@@ -2,44 +2,12 @@ import React, { useRef, useState } from "react";
 import OrganizationChart from "@dabeng/react-orgchart";
 import JSONDigger from "json-digger";
 import { v4 as uuidv4 } from "uuid";
-
+import data from "../data.json"
 import "./edit-node.css";
 
 const EditNode = () => {
   const orgchart = useRef();
-  const datasource = {
-    id: "n1",
-    name: "Lao Lao",
-    title: "general manager",
-    children: [
-      { id: "n2", name: "Bo Miao", title: "department manager" },
-      {
-        id: "n3",
-        name: "Su Miao",
-        title: "department manager",
-        children: [
-          { id: "n4", name: "Tie Hua", title: "senior engineer" },
-          {
-            id: "n5",
-            name: "Hei Hei",
-            title: "senior engineer",
-            children: [
-              { id: "n6", name: "Dan Dan", title: "engineer" },
-              { id: "n7", name: "Xiang Xiang", title: "engineer" }
-            ]
-          },
-          { id: "n8", name: "Pang Pang", title: "senior engineer" }
-        ]
-      },
-      { id: "n9", name: "Hong Miao", title: "department manager" },
-      {
-        id: "n10",
-        name: "Chun Miao",
-        title: "department manager",
-        children: [{ id: "n11", name: "Yue Yue", title: "senior engineer" }]
-      }
-    ]
-  };
+  const datasource = data
   const [ds, setDS] = useState(datasource);
   const dsDigger = new JSONDigger(ds, "id", "children");
 
@@ -90,67 +58,67 @@ const EditNode = () => {
   };
 
   return (
-    <div className="edit-chart-wrapper">
-      <section className="toolbar">
-        <div className="selected-nodes">
-          <div>
-            <h4 style={{ display: "inline-block" }}>Selected Node</h4>
-            <input
-              style={{ marginLeft: "1rem" }}
-              id="cb-multiple-select"
-              type="checkbox"
-              checked={isMultipleSelect}
-              onChange={onMultipleSelectChange}
-            />
-            <label htmlFor="cb-multiple-select">Multiple Select</label>
+      <div className="edit-chart-wrapper">
+        <section className="toolbar">
+          <div className="selected-nodes">
+            <div>
+              <h4 style={{ display: "inline-block" }}>Selected Node</h4>
+              <input
+                  style={{ marginLeft: "1rem" }}
+                  id="cb-multiple-select"
+                  type="checkbox"
+                  checked={isMultipleSelect}
+                  onChange={onMultipleSelectChange}
+              />
+              <label htmlFor="cb-multiple-select">Multiple Select</label>
+            </div>
+            <ul>
+              {Array.from(selectedNodes).map(node => (
+                  <li key={node.id}>
+                    {node.name} - {node.title}
+                  </li>
+              ))}
+            </ul>
           </div>
-          <ul>
-            {Array.from(selectedNodes).map(node => (
-              <li key={node.id}>
-                {node.name} - {node.title}
-              </li>
-            ))}
-          </ul>
-        </div>
-        <div className="new-nodes">
-          <h4>New Node</h4>
+          <div className="new-nodes">
+            <h4>New Node</h4>
 
-          <input
-            type="text"
-            placeholder="name"
-            value={newNodeName}
-            onChange={onNameChange}
-          />
-          <input
-            type="text"
-            placeholder="title"
-            value={newNodeTitle}
-            onChange={onTitleChange}
-          />
-        </div>
-        <div className="action-buttons">
-          <button disabled={!isEditMode} onClick={updateNodes}>
-            Update Nodes
-          </button>
-          <input
-            style={{ marginLeft: "1rem" }}
-            id="cb-mode"
-            type="checkbox"
-            checked={isEditMode}
-            onChange={onModeChange}
-          />
-          <label htmlFor="cb-mode">Edit Mode</label>
-        </div>
-      </section>
-      <OrganizationChart
-        ref={orgchart}
-        datasource={ds}
-        collapsible={!isEditMode}
-        multipleSelect={isMultipleSelect}
-        onClickNode={readSelectedNode}
-        onClickChart={clearSelectedNode}
-      />
-    </div>
+            <input
+                type="text"
+                placeholder="name"
+                value={newNodeName}
+                onChange={onNameChange}
+            />
+            <input
+                type="text"
+                placeholder="title"
+                value={newNodeTitle}
+                onChange={onTitleChange}
+            />
+          </div>
+          <div className="action-buttons">
+            <button disabled={!isEditMode} onClick={updateNodes}>
+              Update Nodes
+            </button>
+            <input
+                style={{ marginLeft: "1rem" }}
+                id="cb-mode"
+                type="checkbox"
+                checked={isEditMode}
+                onChange={onModeChange}
+            />
+            <label htmlFor="cb-mode">Edit Mode</label>
+          </div>
+        </section>
+        <OrganizationChart
+            ref={orgchart}
+            datasource={ds}
+            collapsible={!isEditMode}
+            multipleSelect={isMultipleSelect}
+            onClickNode={readSelectedNode}
+            onClickChart={clearSelectedNode}
+        />
+      </div>
   );
 };
 
