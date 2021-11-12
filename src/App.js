@@ -20,7 +20,7 @@ const App = () => {
             Home
           </NavLink>
           <NavLink to="/default-chart" activeClassName="selected">
-            Deault Chart
+            Default Chart
           </NavLink>
           <NavLink to="/pan-zoom-chart" activeClassName="selected">
             Pan & Zoom Chart

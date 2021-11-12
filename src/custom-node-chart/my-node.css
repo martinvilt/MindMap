@@ -13,7 +13,7 @@
 
 .orgchart.myChart > ul > li > ul li .oc-node::before,
 .orgchart.myChart ul li .oc-node:not(:only-child)::after {
-  background-color: #215a88;
+  background-color: #215a22;
 }
 
 .orgchart.myChart .oc-node .position {
