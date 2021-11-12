@@ -1,4 +1,4 @@
-{"id": "n1","name": "Root","https://wix.github.io/react-native-navigation/docs/root/": "general manager","children": [
+{"id": "n1","name": "React","https://wix.github.io/react-native-navigation/docs/root/": "general manager","children": [
   { "id": "n2", "name": "Core", "title": "https://devexpress.github.io/devextreme-reactive/react/core/docs/guides/fundamentals/", "children": [
     {"id": "n6", "name": "Components", "title": "https://reactjs.org/docs/components-and-props.html"},
     {"id": "n7", "name": "rendering", "title": "https://reactjs.org/docs/render-props.html"},
@@ -6,7 +6,8 @@
     {"id": "n9", "name": "JSX", "title": "https://reactjs.org/docs/introducing-jsx.html"},
     {"id": "n10", "name": "Lifecycle", "title": "https://programmingwithmosh.com/javascript/react-lifecycle-methods/"}
   ]},
-  { "id": "n3", "name": "Text Field", "title": "https://reactnative.dev/docs/textinput", "children": [
+  { "id": "n3", "name": "Forms", "title": "https://reactnative.dev/docs/textinput", "children": [
+    {"id": "n19", "name": "List", "title": "https://www.geeksforgeeks.org/reactjs-lists/"},
     {"id": "n11", "name": "List", "title": "https://www.geeksforgeeks.org/reactjs-lists/"},
     {"id": "n12", "name": "Table", "title": "https://blog.logrocket.com/complete-guide-building-smart-data-table-react/"},
     {"id": "n13", "name": "Events", "title": "https://reactjs.org/docs/handling-events.html"}
